@@ -1,1 +1,18 @@
-<h1>books show</h1>
+<h2>Book detail</h2>
+<table>
+  <tbody>
+    <tr>
+      <td>rink</td>
+      <td><%= link_to @book.title, book_path %></td>
+      <td><%= @book.body %></td>
+      <% if @book.user == current_user %>
+        <td>
+          <%= link_to "Edit", edit_book_path(@book.id), class: "btn btn-sm btn-success" %>
+        </td>
+        <td>
+          <%= link_to "Destroy", book_path(@book.id), method: :delete, class: "btn btn-sm btn-danger", "data-confirm" => "本当に削除しますか？" %>
+        </td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
