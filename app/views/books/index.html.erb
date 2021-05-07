@@ -1,54 +1,39 @@
-<h2>User info</h2>
-<img>
-<table class="table">
-  <tbody>
-    <tr></tr>
-    <tr>
-	  <th>name</th>
-	  <th><%= current_user.name %></th>
-    </tr>
-    <tr>
-	  <th>introduction</th>
-	  <th></th>
-    </tr>
-  </tbody>
-</table>
-
-
-<h2>New book</h2>
-<%= form_with model: @book, local:true do |f| %>
-  <h4>Title</h4>
-  <%= f.text_field :title %>
-  <h4>Opinion</h4>
-  <%= f.text_area :body %>
-  <%= f.submit 'Create Book' %>
-<% end %>
-
-
-<h2>Books</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-    <% @books.each do |book| %>
-    <tbody>
-        <tr>
-            <td>
-                <!--%= link_to post_image_path(post_image.id) do %>-->
-                    <!--%= attachment_image_tag post_image, :image %>-->
-                <!--% end %>-->
-            </td>
-            <td>
-                <%= link_to book.title, book_path(book.id) %>
-            </td>
-            <td>
-                <%= book.body %>
-            </td>
-        </tr>
-    </tbody>
-    <% end %>
-</table>
+<p></p>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <div class="col-md-3">
+            <%= render 'books/list', book: @book %>
+        </div>
+        
+        <div class="col-md-8 offset-md-1">
+            <h2>Books</h2>
+            <table class="table table-hover table-inverse">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Opinion</th>
+                        <th colspan="3"></th>
+                    </tr>
+                </thead>
+                <% @books.each do |book| %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!--%= link_to user_path(user.id) do %>-->
+                                <!--%= attachment_image_tag book, :image %>-->
+                            <!--% end %>-->
+                        </td>
+                        <td>
+                            <%= link_to book.title, book_path(book.id) %>
+                        </td>
+                        <td>
+                            <%= book.body %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% end %>
+            </table>
+        </div>
+    </div>
+</div>
