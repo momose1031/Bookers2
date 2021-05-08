@@ -1,12 +1,12 @@
 <% if flash[:notice] %>
-  <p class="notice-user-update">
+  <p class="notice">
     <%= flash[:notice] %>
 　</p>
 <% end %>
 <div class="container px-5 px-sm-0">
     <div class="row">
         <div class="col-md-3">
-            <%= render 'books/list', book: @book %>
+            <%= render 'books/list', book: @book, user: current_user %>
         </div>
 
         <div class="col-md-8 offset-md-1">
