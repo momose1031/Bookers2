@@ -1,28 +1,43 @@
-<h2>Books</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-        </tr>
-    </thead>
-    <% @books.each do |book| %>
-    <tbody>
-        <tr>
-            <td>
-                <!--%= link_to post_image_path(post_image.id) do %>-->
-                    <!--%= attachment_image_tag post_image, :image %>-->
-                <!--% end %>-->
-            </td>
-            <td>
-                <%= link_to book.title, book_path(book.id) %>
-            </td>
-            <td>
-                <%= book.body %>
-            </td>
-        </tr>
-    </tbody>
-    <% end %>
-</table>
-<%= paginate @books %>
+<% if flash[:notice] %>
+  <p class="notice-user-update">
+    <%= flash[:notice] %>
+　</p>
+<% end %>
+<div class="container px-5 px-sm-0">
+    <div class="row">
+        <div class="col-md-3">
+            <!--%= render 'books/list', book:@book %>-->
+        </div>
+        
+        <div class="col-md-8 offset-md-1">
+            <h2>Books</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Opinion</th>
+                        <th colspan="3"></th>
+                    </tr>
+                </thead>
+                <% @books.each do |book| %>
+                <tbody>
+                    <tr>
+                        <td>
+                            <!--%= link_to post_image_path(post_image.id) do %>-->
+                                <!--%= attachment_image_tag post_image, :image %>-->
+                            <!--% end %>-->
+                        </td>
+                        <td>
+                            <%= link_to book.title, book_path(book.id) %>
+                        </td>
+                        <td>
+                            <%= book.body %>
+                        </td>
+                    </tr>
+                </tbody>
+                <% end %>
+            </table>
+            <%= paginate @books %>
+        </div>
+    </div>
+</div>
