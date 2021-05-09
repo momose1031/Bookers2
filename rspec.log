@@ -1,0 +1,462 @@
+
+Book モデルに関するテスト
+  実際に保存してみる
+[31m    有効な投稿内容の場合は保存されるか (FAILED - 1)[0m
+  空白のバリデーションチェック
+[32m    titleが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか[0m
+[32m    bodyが空白の場合にバリデーションチェックされ空白のエラーメッセージが返ってきているか[0m
+  titleを空白で投稿した場合に画面にエラーメッセージが表示されているか
+[31m    エラーメッセージは正しく表示されるか (FAILED - 2)[0m
+  bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか
+[31m    エラーメッセージは正しく表示されるか (FAILED - 3)[0m
+
+投稿のテスト
+  トップ画面(root_path)のテスト
+    表示の確認
+[31m      トップ画面(root_path)に一覧ページへのリンクが表示されているか (FAILED - 4)[0m
+[31m      root_pathが"/"であるか (FAILED - 5)[0m
+  一覧画面のテスト
+    一覧の表示とリンクの確認
+[31m      bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか (FAILED - 6)[0m
+[31m      bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか (FAILED - 7)[0m
+[31m      Create Bookボタンが表示される (FAILED - 8)[0m
+    投稿処理に関するテスト
+[31m      投稿に成功しサクセスメッセージが表示されるか (FAILED - 9)[0m
+[31m      投稿に失敗する (FAILED - 10)[0m
+[31m      投稿後のリダイレクト先は正しいか (FAILED - 11)[0m
+    book削除のテスト
+[31m      bookの削除 (FAILED - 12)[0m
+  詳細画面のテスト
+    表示の確認
+[31m      本のタイトルと感想が画面に表示されていること (FAILED - 13)[0m
+[31m      Editリンクが表示される (FAILED - 14)[0m
+[31m      Backリンクが表示される (FAILED - 15)[0m
+    リンクの遷移先の確認
+[31m      Editの遷移先は編集画面か (FAILED - 16)[0m
+[31m      Backの遷移先は一覧画面か (FAILED - 17)[0m
+  編集画面のテスト
+    表示の確認
+[31m      編集前のタイトルと感想がフォームに表示(セット)されている (FAILED - 18)[0m
+[31m      Update Bookボタンが表示される (FAILED - 19)[0m
+[31m      Showリンクが表示される (FAILED - 20)[0m
+[31m      Backリンクが表示される (FAILED - 21)[0m
+    リンクの遷移先の確認
+[31m      Showの遷移先は詳細画面か (FAILED - 22)[0m
+[31m      Backの遷移先は一覧画面か (FAILED - 23)[0m
+    更新処理に関するテスト
+[31m      更新に成功しサクセスメッセージが表示されるか (FAILED - 24)[0m
+[31m      更新に失敗しエラーメッセージが表示されるか (FAILED - 25)[0m
+[31m      更新後のリダイレクト先は正しいか (FAILED - 26)[0m
+
+Failures:
+
+  1) Book モデルに関するテスト 実際に保存してみる 有効な投稿内容の場合は保存されるか
+     [31mFailure/Error: expect(FactoryBot.build(:book)).to be_valid[0m
+     [31m  expected #<Book id: nil, title: "s9r8z", body: "kapl1xoy5ncphegseocm", user_id: nil, created_at: nil, updated_at: nil> to be valid, but got errors: User must exist[0m
+     [36m# ./spec/models/book_spec.rb:8:in `block (3 levels) in <top (required)>'[0m
+
+  2) Book モデルに関するテスト titleを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+     [31mFailure/Error: fill_in 'book[title]', with: ''[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find field "book[title]" that is not disabled[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:303:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/base.rb:83:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:292:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:53:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/actions.rb:91:in `fill_in'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/session.rb:768:in `block (2 levels) in <class:Session>'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/dsl.rb:58:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/models/book_spec.rb:26:in `block (3 levels) in <top (required)>'[0m
+
+  3) Book モデルに関するテスト bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか
+     [31mFailure/Error: fill_in 'book[body]', with: ''[0m
+     [31m[0m
+     [31mCapybara::ElementNotFound:[0m
+     [31m  Unable to find field "book[body]" that is not disabled[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:303:in `block in synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/base.rb:83:in `synchronize'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:292:in `synced_resolve'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/finders.rb:53:in `find'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/node/actions.rb:91:in `fill_in'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/session.rb:768:in `block (2 levels) in <class:Session>'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/capybara-3.35.3/lib/capybara/dsl.rb:58:in `block (2 levels) in <module:DSL>'[0m
+     [36m# ./spec/models/book_spec.rb:36:in `block (3 levels) in <top (required)>'[0m
+
+  4) 投稿のテスト トップ画面(root_path)のテスト 表示の確認 トップ画面(root_path)に一覧ページへのリンクが表示されているか
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  5) 投稿のテスト トップ画面(root_path)のテスト 表示の確認 root_pathが"/"であるか
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  6) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  7) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  8) 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 Create Bookボタンが表示される
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  9) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に成功しサクセスメッセージが表示されるか
+     [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+     [31m[0m
+     [31mActiveRecord::RecordInvalid:[0m
+     [31m  Validation failed: User must exist[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+     [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+     [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  10) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に失敗する
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  11) 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿後のリダイレクト先は正しいか
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  12) 投稿のテスト 一覧画面のテスト book削除のテスト bookの削除
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  13) 投稿のテスト 詳細画面のテスト 表示の確認 本のタイトルと感想が画面に表示されていること
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  14) 投稿のテスト 詳細画面のテスト 表示の確認 Editリンクが表示される
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  15) 投稿のテスト 詳細画面のテスト 表示の確認 Backリンクが表示される
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  16) 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Editの遷移先は編集画面か
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  17) 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  18) 投稿のテスト 編集画面のテスト 表示の確認 編集前のタイトルと感想がフォームに表示(セット)されている
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  19) 投稿のテスト 編集画面のテスト 表示の確認 Update Bookボタンが表示される
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  20) 投稿のテスト 編集画面のテスト 表示の確認 Showリンクが表示される
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  21) 投稿のテスト 編集画面のテスト 表示の確認 Backリンクが表示される
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  22) 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Showの遷移先は詳細画面か
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  23) 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  24) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に成功しサクセスメッセージが表示されるか
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  25) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に失敗しエラーメッセージが表示されるか
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+  26) 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新後のリダイレクト先は正しいか
+      [31mFailure/Error: let!(:book) { create(:book,title:'hoge',body:'body') }[0m
+      [31m[0m
+      [31mActiveRecord::RecordInvalid:[0m
+      [31m  Validation failed: User must exist[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/evaluation.rb:18:in `create'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:12:in `block in result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `tap'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy/create.rb:9:in `result'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory.rb:43:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:29:in `block in run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/factory_runner.rb:28:in `run'[0m
+      [36m# /home/ec2-user/.rvm/gems/ruby-2.6.3/gems/factory_bot-6.2.0/lib/factory_bot/strategy_syntax_method_registrar.rb:28:in `block in define_singular_strategy_method'[0m
+      [36m# ./spec/system/books_spec.rb:4:in `block (2 levels) in <main>'[0m
+
+Finished in 0.72243 seconds (files took 2.52 seconds to load)
+[31m28 examples, 26 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/models/book_spec.rb:7[0m [36m# Book モデルに関するテスト 実際に保存してみる 有効な投稿内容の場合は保存されるか[0m
+[31mrspec ./spec/models/book_spec.rb:28[0m [36m# Book モデルに関するテスト titleを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか[0m
+[31mrspec ./spec/models/book_spec.rb:38[0m [36m# Book モデルに関するテスト bodyを空白で投稿した場合に画面にエラーメッセージが表示されているか エラーメッセージは正しく表示されるか[0m
+[31mrspec ./spec/system/books_spec.rb:10[0m [36m# 投稿のテスト トップ画面(root_path)のテスト 表示の確認 トップ画面(root_path)に一覧ページへのリンクが表示されているか[0m
+[31mrspec ./spec/system/books_spec.rb:13[0m [36m# 投稿のテスト トップ画面(root_path)のテスト 表示の確認 root_pathが"/"であるか[0m
+[31mrspec ./spec/system/books_spec.rb:23[0m [36m# 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookの一覧表示(tableタグ)と投稿フォームが同一画面に表示されているか[0m
+[31mrspec ./spec/system/books_spec.rb:28[0m [36m# 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 bookのタイトルと感想を表示し、詳細・編集・削除のリンクが表示されているか[0m
+[31mrspec ./spec/system/books_spec.rb:51[0m [36m# 投稿のテスト 一覧画面のテスト 一覧の表示とリンクの確認 Create Bookボタンが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:56[0m [36m# 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に成功しサクセスメッセージが表示されるか[0m
+[31mrspec ./spec/system/books_spec.rb:62[0m [36m# 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿に失敗する[0m
+[31mrspec ./spec/system/books_spec.rb:67[0m [36m# 投稿のテスト 一覧画面のテスト 投稿処理に関するテスト 投稿後のリダイレクト先は正しいか[0m
+[31mrspec ./spec/system/books_spec.rb:75[0m [36m# 投稿のテスト 一覧画面のテスト book削除のテスト bookの削除[0m
+[31mrspec ./spec/system/books_spec.rb:86[0m [36m# 投稿のテスト 詳細画面のテスト 表示の確認 本のタイトルと感想が画面に表示されていること[0m
+[31mrspec ./spec/system/books_spec.rb:90[0m [36m# 投稿のテスト 詳細画面のテスト 表示の確認 Editリンクが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:94[0m [36m# 投稿のテスト 詳細画面のテスト 表示の確認 Backリンクが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:100[0m [36m# 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Editの遷移先は編集画面か[0m
+[31mrspec ./spec/system/books_spec.rb:105[0m [36m# 投稿のテスト 詳細画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か[0m
+[31mrspec ./spec/system/books_spec.rb:117[0m [36m# 投稿のテスト 編集画面のテスト 表示の確認 編集前のタイトルと感想がフォームに表示(セット)されている[0m
+[31mrspec ./spec/system/books_spec.rb:121[0m [36m# 投稿のテスト 編集画面のテスト 表示の確認 Update Bookボタンが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:124[0m [36m# 投稿のテスト 編集画面のテスト 表示の確認 Showリンクが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:128[0m [36m# 投稿のテスト 編集画面のテスト 表示の確認 Backリンクが表示される[0m
+[31mrspec ./spec/system/books_spec.rb:134[0m [36m# 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Showの遷移先は詳細画面か[0m
+[31mrspec ./spec/system/books_spec.rb:139[0m [36m# 投稿のテスト 編集画面のテスト リンクの遷移先の確認 Backの遷移先は一覧画面か[0m
+[31mrspec ./spec/system/books_spec.rb:146[0m [36m# 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に成功しサクセスメッセージが表示されるか[0m
+[31mrspec ./spec/system/books_spec.rb:152[0m [36m# 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新に失敗しエラーメッセージが表示されるか[0m
+[31mrspec ./spec/system/books_spec.rb:158[0m [36m# 投稿のテスト 編集画面のテスト 更新処理に関するテスト 更新後のリダイレクト先は正しいか[0m
+
