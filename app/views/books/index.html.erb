@@ -10,40 +10,56 @@
   <% end %>
 <% end %>
 <div class="container px-5 px-sm-0">
-    <div class="row">
-        <div class="col-md-3">
-            <%= render 'books/list', book: @book, user: current_user %>
-        </div>
+  <div class="row">
+    <div class="col-md-3">
+        <%= render 'books/list', book: @book, user: current_user %>
+    </div>
 
-        <div class="col-md-8 offset-md-1">
-            <h2>Books</h2>
-            <table class="table table-hover table-inverse">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Title</th>
-                        <th>Opinion</th>
-                        <th colspan="3"></th>
-                    </tr>
-                </thead>
-                <% @books.each do |book| %>
-                <tbody>
-                    <tr>
-                        <td>
-                            <%= link_to user_path(book.user.id) do %>
-                                <%= attachment_image_tag book.user, :profile_image, format: 'jpeg', size: '40x40',  fallback: "no_image.jpg" %>
-                            <% end %>
-                        </td>
-                        <td>
-                            <%= link_to book.title, book_path(book.id) %>
-                        </td>
-                        <td>
-                            <%= book.body %>
-                        </td>
-                    </tr>
-                </tbody>
-                <% end %>
-            </table>
-        </div>
+    <div class="col-md-8 offset-md-1">
+        <h2>Books</h2>
+        <table class="table table-hover table-inverse">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Title</th>
+              <th>Opinion</th>
+              <th colspan="5"></th>
+            </tr>
+          </thead>
+          <% @books.each do |book| %>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to user_path(book.user.id) do %>
+                    <%= attachment_image_tag book.user, :profile_image, format: 'jpeg', size: '40x40',  fallback: "no_image.jpg" %>
+                  <% end %>
+                </td>
+                <td>
+                  <%= link_to book.title, book_path(book.id) %>
+                </td>
+                <td>
+                  <%= book.body %>
+                </td>
+                <td>
+                  <% if book.favorited_by?(current_user) %>
+                    <p>
+                      <%= link_to book_favorite_path(book.id), method: :delete do %>
+                        ♥<%= book.favorites.count %>
+                      <% end %>
+                    </p>
+                    <% else %>
+                    <p>
+                      <%= link_to book_favorite_path(book.id), method: :post do %>
+                        ♡<%= book.favorites.count %>
+                      <% end %>
+                    </p>
+                  <% end %>
+                </td>
+                <td>コメント数</td>
+              </tr>
+            </tbody>
+          <% end %>
+        </table>
+      </div>
     </div>
 </div>
