@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resource :book_comments, only: [:create, :destroy]
   end
   resources :users, only: [:index, :show, :edit, :update]
+  
   get 'home/about' => 'homes#about'
   
 end
