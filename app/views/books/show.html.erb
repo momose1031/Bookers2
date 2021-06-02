@@ -50,7 +50,9 @@
               <%= book_comment.user.name %>
             <% end %>
             <%= book_comment.comment %>
-            <%= link_to 'Destroy', book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% if book_comment.user == current_user %>
+              <%= link_to 'Destroy', book_book_comments_path(book_comment.book, book_comment), method: :delete, class: "btn btn-sm btn-danger" %>
+            <% end %>
           <% end %>
 
           <%= form_with(model: [@book, @book_comment], local: true) do |f| %>
