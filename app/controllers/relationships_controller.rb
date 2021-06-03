@@ -3,6 +3,7 @@ class RelationshipsController < ApplicationController
   def create
     @other_user = User.find(params[:follower])
     current_user.follow(@other_user)
+  end
     
     
   def destroy
