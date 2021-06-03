@@ -8,27 +8,35 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
 
-  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
-  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  has_many :follower_relationship, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォロー取得（フォローする側から見て、フォローされる側のユーザーを集める）
+  has_many :following_user, through: :follower_relationship, source: :followed #中間テーブルを介して「followed」モデルのユーザー（フォローされた側）を集めることを「following_user」と定義
 
-  has_many :followings, through: :active_relationships, source: :followed
-  has_many :followers, through: :passive_relationships, source: :follower
+  has_many :followed_relationship, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォロワー取得（フォローされる側から見て、フォローしてくる側のユーザーを集める）
+  has_many :follower_user, through: :followed_relationship, source: :follower #中間テーブルを介して「follower」モデルのユーザー（フォローする側）を集めることを「follower_user」と定義
+
 
   attachment :profile_image
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
-  # フォローする
-  def follow(other_user)
-    self.active_relationships.create(follower_id: other_user.id)
+  
+  def followed_by?(user)
+    # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
+    followed_relationship.find_by(follower_id: user.id).present?
   end
-  # フォロー確認
-  def following?(other_user)
-    self.followings.include?(other_user)
-  end
-  # フォロー解除
-  def unfollow(other_user)
-    self.active_relationships.find_by(followed_id: other_user.id).destroy
-  end
+  # # ユーザをフォローする
+  # def follow(user_id)
+  #   follower.create(followed_id: user.id)
+  # end
+  # # ユーザーのフォローを解除
+  # def unfollow(user_id)
+  #   follower.find_by(followed_id: user.id).destroy
+  # end
+  # # フォローしていればtrueを返す
+  # def following?(user)
+  #   following_user.include?(user)
+  # end
+
+  
 
 end
