@@ -28,8 +28,8 @@
                             <td>
                                 <%= user.name %>
                             </td>
-                            <td>フォロー数:</td>
-                            <td>フォロワー数:</td>
+                            <td>フォロー数:<%= user.following_user.count  %></td>
+                            <td>フォロワー数:<%= user.follower_user.count %></td>
                             <td>
                               <% if current_user != user %>
                                 <% if user.followed_by?(current_user) %>

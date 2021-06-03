@@ -13,17 +13,25 @@
       </tr>
       <tr>
         <th>follows</th>
-        <th>数字</th>
+        <th><%= link_to (user.following_user.count), followings_user_path(user.id) %></th>
       </tr>
       <tr>
         <th>followers</th>
-        <th>数字</th>
+        <th><%= link_to (user.follower_user.count), followers_user_path(user.id) %></th>
       </tr>
     </tbody>
   </table>
   <div class="row">
-      <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-cog"></i>
+      <% if current_user != user %>
+        <% if user.followed_by?(current_user) %>
+          <%=link_to "フォロー外す", user_relationship_path(user_id: user, id: user), method: :delete, class:"btn btn-success" %>
+        <% else %>
+          <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post, class:"btn btn-success" %></p>
+        <% end %>
+      <% else %>
+        <%= link_to edit_user_path(user.id), class:"btn btn-outline-secondary btn-block" do %>
+            <i class="fas fa-user-cog"></i>
+        <% end %>
       <% end %>
   </div>
 

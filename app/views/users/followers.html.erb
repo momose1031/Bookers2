@@ -1,11 +1,25 @@
-<% @users.each do |user| %>
-  <hr>
-  <p><span>email: </span><%= link_to user.email, user_path(user.id) %></p>
-    <% if current_user != user %>
-        <% if user.followed_by?(current_user) %>
-            <p><%=link_to "フォロー済み", user_relationship_path(user_id: user, id: user), method: :delete %></p>
-        <% else %>
-            <p><%=link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
-        <% end %>
-    <% end %>
-<% end %>
+<h2>Follower Users</h2>
+  <% if @users.count == 0 %>
+    <p>ユーザーはいません</p>
+  <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>image</th>
+          <th>name</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <% @users.each do |user| %>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag user, :profile_image, format: 'jpeg', size: '40x40',  fallback: "no_image.jpg" %></td>
+          <td><%= user.name %></td>
+          <td>フォロー数:<%= user.following_user.count  %></td>
+          <td>フォロワー数:<%= user.follower_user.count %></td>
+          <td><%= link_to "Show", user_path(user.id) %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+  <% end %>
