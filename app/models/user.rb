@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   validates :name, uniqueness: true, length: { in: 2..20 }
   validates :introduction, length: { maximum: 50 }
-  
+
   def followed_by?(user)
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     followed_relationship.find_by(follower_id: user.id).present?
@@ -36,14 +36,14 @@ class User < ApplicationRecord
   # def following?(user)
   #   following_user.include?(user)
   # end
-  
+
   def self.search(search,word)
     if search == "forward_match"
       @user = User.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
       @user = User.where("name LIKE?","%#{word}")
     elsif search == "perfect_match"
-      @user = User.where("#{word}")
+      @user = User.where(name: word)
     elsif search == "partial_match"
       @user = User.where("name LIKE?","%#{word}%")
     else
@@ -51,6 +51,6 @@ class User < ApplicationRecord
     end
   end
 
-  
+
 
 end

@@ -18,7 +18,7 @@ class Book < ApplicationRecord
     elsif search == "backward_match"
       @book = Book.where("title LIKE?","%#{word}")
     elsif search == "perfect_match"
-      @book = Book.where("#{word}")
+      @book = Book.where(title: word)
     elsif search == "partial_match"
       @book = Book.where("title LIKE?","%#{word}%")
     else
