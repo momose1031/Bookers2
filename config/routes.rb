@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :followings, :followers
     end
   end
+  get 'search' => 'searches#index'
 end
 
 
