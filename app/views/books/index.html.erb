@@ -41,7 +41,7 @@
                   <%= book.body %>
                 </td>
                 <td>
-                  <div id="favorite_button">
+                  <div id="favorite_<%= @book.id %>">
                     <%= render partial: 'favorites/favorite', locals: {book: book} %>
                   </div>
                   <!--% if book.favorited_by?(current_user) %>-->
