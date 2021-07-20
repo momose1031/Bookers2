@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
   resources :books, only: [:create, :index, :show, :edit, :update, :destroy] do
+    get :favorites, on: :collection
     resource :favorite, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
@@ -15,8 +16,5 @@ Rails.application.routes.draw do
       get :followings, :followers
     end
   end
-  
-  
+
 end
-
-
